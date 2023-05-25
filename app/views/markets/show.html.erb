@@ -1,7 +1,7 @@
 <h1><%= @market.name %></h1>
 
 <h3><%= @market.street %></h3>
-<h3><%= format_address(@market) %></h3>
+<h3><%= @market.format_address %></h3>
 
 <h2>Vendors at our Market:</h2>
 <% @vendors.each do |vendor| %>
