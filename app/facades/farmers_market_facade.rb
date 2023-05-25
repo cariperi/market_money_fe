@@ -24,6 +24,13 @@ class FarmersMarketFacade
     end
   end
 
+  def get_vendor(id)
+    data = service.get_vendor(id)
+    vendor = data[:data]
+
+    Vendor.new(clean_vendor_data(vendor))
+  end
+
   private
 
   def service

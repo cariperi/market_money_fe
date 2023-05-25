@@ -73,5 +73,29 @@ RSpec.describe 'Farmers Market Service' do
       expect(attributes).to have_key(:credit_accepted)
       expect(attributes[:credit_accepted]).to be_in([true, false])
     end
+
+    it 'can retrieve a single vendor' do
+      vendor = FarmersMarketService.new.get_vendor(55823)
+
+      expect(vendor).to be_a(Hash)
+      expect(vendor[:data]).to be_a(Hash)
+
+      vendor = vendor[:data]
+
+      expect(vendor).to have_key(:id)
+      expect(vendor).to have_key(:type)
+      expect(vendor).to have_key(:attributes)
+
+      attributes = vendor[:attributes]
+
+      keys = [:name, :description, :contact_name, :contact_phone]
+      keys.each do |key|
+        expect(attributes).to have_key(key)
+        expect(attributes[key]).to be_a(String)
+      end
+
+      expect(attributes).to have_key(:credit_accepted)
+      expect(attributes[:credit_accepted]).to be_in([true, false])
+    end
   end
 end

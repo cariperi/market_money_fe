@@ -20,4 +20,8 @@ class Market
     @lon = data[:lon]
     @id = data[:id]
   end
+
+  def format_address
+    "#{@city}, #{@state} #{@zip}"
+  end
 end
