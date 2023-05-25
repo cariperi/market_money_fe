@@ -14,4 +14,8 @@ attr_reader :name,
     @credit_accepted = data[:credit_accepted]
     @id = data[:id]
   end
+
+  def is_credit_accepted
+    @credit_accepted ? "YES" : "NO"
+  end
 end
