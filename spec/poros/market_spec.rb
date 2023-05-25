@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Market do
-  it 'has attributes' do
-    data = {
+  before(:each) do
+    @data = {
       id: '1',
       type: 'market',
       name: 'Test Market',
@@ -14,10 +14,19 @@ RSpec.describe Market do
       lat: '1.0',
       lon: '1.0'
     }
+  end
 
-    market = Market.new(data)
+  it 'exists and has attributes' do
+    market = Market.new(@data)
 
+    expect(market).to be_a(Market)
     expect(market.id).to eq('1')
     expect(market.name).to eq('Test Market')
+  end
+
+  it '#format_address can format the address' do
+    market = Market.new(@data)
+
+    expect(market.format_address).to eq('Test City, Test State 12345')
   end
 end
