@@ -6,7 +6,8 @@ class Market
               :state,
               :zip,
               :lat,
-              :lon
+              :lon,
+              :id
 
   def initialize(data)
     @name = data[:name]
@@ -17,5 +18,6 @@ class Market
     @zip = data[:zip]
     @lat = data[:lat]
     @lon = data[:lon]
+    @id = data[:id]
   end
 end
