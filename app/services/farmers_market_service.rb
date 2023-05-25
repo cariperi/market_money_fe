@@ -3,6 +3,10 @@ class FarmersMarketService
     get_url('api/v0/markets')
   end
 
+  def get_market(id)
+    get_url("api/v0/markets/#{id}")
+  end
+
   def conn
     Faraday.new(url: 'http://localhost:3000') do |f|
     end

@@ -1,6 +1,6 @@
 class MarketsFacade
-  def self.get_markets
-    data = FarmersMarketService.new.get_markets
+  def get_markets
+    data = service.get_markets
     markets = data[:data]
 
     markets.map do |market|
@@ -8,7 +8,14 @@ class MarketsFacade
     end
   end
 
-  def self.clean_data(data)
+  def get_market(id)
+    data = service.get_market(id)
+    market = data[:data]
+
+    Market.new(clean_data(market))
+  end
+
+  def clean_data(data)
     attributes = data[:attributes]
     {
       id: data[:id],
@@ -21,5 +28,11 @@ class MarketsFacade
       lat: attributes[:lat],
       lon: attributes[:lon]
     }
+  end
+
+  private
+
+  def service
+    @_service ||= FarmersMarketService.new
   end
 end

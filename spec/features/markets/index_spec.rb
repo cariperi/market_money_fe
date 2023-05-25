@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Markets Index Page', type: :feature do
   before(:each) do
-    @markets = MarketsFacade.get_markets
+    @markets = MarketsFacade.new.get_markets
   end
 
   describe 'User Story 1' do
