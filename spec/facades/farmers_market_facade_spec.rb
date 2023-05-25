@@ -33,5 +33,13 @@ RSpec.describe 'Markets Facade' do
         end
       end
     end
+
+    describe 'get_vendor(id)' do
+      it 'can create one Vendor object' do
+        vendor = FarmersMarketFacade.new.get_vendor(55823)
+
+        expect(vendor).to be_a(Vendor)
+      end
+    end
   end
 end
