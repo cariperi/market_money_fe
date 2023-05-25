@@ -10,10 +10,10 @@ RSpec.describe 'Market Show Page' do
       expect(page).to have_content("Washington, District of Columbia 20009")
     end
 
-    xit 'I also see a list of all vendors at that market and each vendor name is a link to the vendor show page' do
+    it 'I also see a list of all vendors at that market and each vendor name is a link to the vendor show page' do
       visit market_path(322458)
 
-      expect(page).to have_content("Vendors at our Market")
+      expect(page).to have_content("Vendors at our Market:")
       expect(page).to have_content("The Charcuterie Corner")
 
       click_on "The Charcuterie Corner"
