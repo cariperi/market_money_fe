@@ -15,15 +15,15 @@ RSpec.describe 'Farmers Market Service' do
       expect(market).to have_key(:attributes)
 
       attributes = market[:attributes]
-      expect(attributes).to have_key(:name)
-      expect(attributes).to have_key(:street)
-      expect(attributes).to have_key(:city)
-      expect(attributes).to have_key(:county)
-      expect(attributes).to have_key(:state)
-      expect(attributes).to have_key(:zip)
-      expect(attributes).to have_key(:lat)
-      expect(attributes).to have_key(:lon)
+
+      keys = [:name, :street, :city, :county, :state, :zip, :lat, :lon]
+      keys.each do |key|
+        expect(attributes).to have_key(key)
+        expect(attributes[key]).to be_a(String)
+      end
+
       expect(attributes).to have_key(:vendor_count)
+      expect(attributes[:vendor_count]).to be_an(Integer)
     end
   end
 end
